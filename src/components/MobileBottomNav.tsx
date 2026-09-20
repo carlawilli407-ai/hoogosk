@@ -9,17 +9,15 @@ const navItems = [
     href: '/',
     icon: (active: boolean) => (
       <div
-        className={`w-9 h-9 rounded-full flex items-center justify-center ${active ? 'bg-[#026CDF]' : 'bg-transparent'}`}
+        className={`w-7 h-7 rounded-full flex items-center justify-center border ${
+          active ? 'bg-[#026CDF] border-[#026CDF]' : 'bg-transparent border-white/50'
+        }`}
       >
-        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="10" strokeWidth={active ? 2.5 : 1.5} />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={active ? 2.5 : 1.5}
-            d="M12 8v4l2 2"
-          />
-        </svg>
+        <span
+          className={`font-extrabold text-sm leading-none ${active ? 'text-white' : 'text-white/50'}`}
+        >
+          t
+        </span>
       </div>
     ),
   },
