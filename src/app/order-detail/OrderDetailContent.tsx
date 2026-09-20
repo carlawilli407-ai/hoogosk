@@ -39,7 +39,8 @@ const EVENT_CATALOG: Record<string, EventData> = {
     venue: 'Alamodome',
     city: 'San Antonio, TX',
     email: 'sandrawilli4042@gmail.com',
-    image: 'https://s1.ticketm.net/dam/a/386/bdd143e5-4726-49af-9523-7927682c9386_RETINA_PORTRAIT_3_2.jpg',
+    image:
+      'https://s1.ticketm.net/dam/a/386/bdd143e5-4726-49af-9523-7927682c9386_RETINA_PORTRAIT_3_2.jpg',
     accentColor: '#A855F7',
     ticket_count: 4,
     total_amount: 840,
@@ -60,7 +61,8 @@ const EVENT_CATALOG: Record<string, EventData> = {
     venue: 'American Airlines Center',
     city: 'Dallas, TX',
     email: 'sandrawilli4042@gmail.com',
-    image: 'https://s1.ticketm.net/dam/a/f72/4c583e8a-6739-4fb2-9861-e73978841f72_RETINA_PORTRAIT_3_2.jpg',
+    image:
+      'https://s1.ticketm.net/dam/a/f72/4c583e8a-6739-4fb2-9861-e73978841f72_RETINA_PORTRAIT_3_2.jpg',
     accentColor: '#F59E0B',
     ticket_count: 4,
     total_amount: 640,
@@ -75,8 +77,18 @@ const EVENT_CATALOG: Record<string, EventData> = {
 
 const TICKET_STUB_BADGE = (
   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2 12h18M4 12v-4a2 2 0 012-2h10a2 2 0 012 2v4M4 12v4a2 2 0 002 2h10a2 2 0 002-2v-4m0 0V7m0 5H6m10 0h2m-6 0h2m-4 0h2" />
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 8.5v7m0 0v7m0-7h16v7m0-3a2 2 0 01-2 2H6a2 2 0 01-2-2v-2" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M2 12h18M4 12v-4a2 2 0 012-2h10a2 2 0 012 2v4M4 12v4a2 2 0 002 2h10a2 2 0 002-2v-4m0 0V7m0 5H6m10 0h2m-6 0h2m-4 0h2"
+    />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M4 8.5v7m0 0v7m0-7h16v7m0-3a2 2 0 01-2 2H6a2 2 0 01-2-2v-2"
+    />
   </svg>
 );
 
@@ -100,9 +112,7 @@ function TicketDetailView() {
             <p className="text-white/70 text-sm mt-1">
               {order.venue} — {order.city}
             </p>
-            <p className="text-white/40 text-xs mt-0.5 truncate">
-              {order.email}
-            </p>
+            <p className="text-white/40 text-xs mt-0.5 truncate">{order.email}</p>
           </div>
           {/* Ticket count badge */}
           <div className="flex items-center gap-1 flex-shrink-0 bg-white/10 rounded-lg px-2.5 py-1.5">
@@ -138,9 +148,7 @@ function TicketDetailView() {
         <button
           onClick={() => setActiveTab('Tickets')}
           className={`flex-1 py-3.5 text-sm font-semibold transition-colors ${
-            activeTab === 'Tickets'
-              ? 'text-gray-900 border-b-2 border-gray-900'
-              : 'text-gray-400'
+            activeTab === 'Tickets' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400'
           }`}
         >
           Tickets
@@ -148,9 +156,7 @@ function TicketDetailView() {
         <button
           onClick={() => setActiveTab('Extras')}
           className={`flex-1 py-3.5 text-sm font-semibold transition-colors ${
-            activeTab === 'Extras'
-              ? 'text-gray-900 border-b-2 border-gray-900'
-              : 'text-gray-400'
+            activeTab === 'Extras' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400'
           }`}
         >
           Extras
@@ -164,9 +170,7 @@ function TicketDetailView() {
           <div className="flex items-center justify-between mb-4">
             <div>
               <p className="text-gray-900 font-bold text-sm">Order #{order.order_number}</p>
-              <p className="text-gray-500 text-xs mt-0.5">
-                x{order.ticket_count} Tickets
-              </p>
+              <p className="text-gray-500 text-xs mt-0.5">x{order.ticket_count} Tickets</p>
             </div>
             <button className="p-1">
               <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
@@ -276,22 +280,52 @@ function TicketDetailView() {
               {/* Bottom action bar */}
               <div className="absolute bottom-0 left-0 right-0 bg-white/90 px-4 py-2 flex items-center justify-around z-10">
                 <button className="flex flex-col items-center gap-0.5">
-                  <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  <svg
+                    className="w-4 h-4 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 10l7-7m0 0l7 7m-7-7v18"
+                    />
                   </svg>
                   <span className="text-[9px] text-gray-500">Directions</span>
                 </button>
                 <div className="w-px h-6 bg-gray-300" />
                 <button className="flex flex-col items-center gap-0.5">
-                  <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  <svg
+                    className="w-4 h-4 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
                   </svg>
                   <span className="text-[9px] text-gray-500">Open Maps</span>
                 </button>
                 <div className="w-px h-6 bg-gray-300" />
                 <button className="flex flex-col items-center gap-0.5">
-                  <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  <svg
+                    className="w-4 h-4 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                    />
                   </svg>
                   <span className="text-[9px] text-gray-500">Refresh</span>
                 </button>
@@ -312,8 +346,18 @@ function TicketDetailView() {
       {/* Extras tab */}
       {activeTab === 'Extras' && (
         <div className="px-4 pt-8 flex flex-col items-center text-center">
-          <svg className="w-16 h-16 text-gray-200 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+          <svg
+            className="w-16 h-16 text-gray-200 mb-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+            />
           </svg>
           <p className="text-gray-500 text-sm">No extras available for this order.</p>
         </div>

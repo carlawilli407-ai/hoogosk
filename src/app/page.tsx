@@ -14,7 +14,8 @@ const forYouEvents = [
     time: '6:00PM',
     venue: 'New York, NY - Mercury Lounge',
     tour: "Get To Drinkin' Tour",
-    image: 'https://s1.ticketm.net/dam/a/551/e19efdce-e15d-436f-b66c-3aa8822a2551_RETINA_PORTRAIT_3_2.jpg',
+    image:
+      'https://s1.ticketm.net/dam/a/551/e19efdce-e15d-436f-b66c-3aa8822a2551_RETINA_PORTRAIT_3_2.jpg',
     alt: 'Zach John King performing live on stage',
     accentColor: '#026CDF',
   },
@@ -27,7 +28,8 @@ const forYouEvents = [
     time: '8:00PM',
     venue: 'New Orleans, LA - Smoothie King Center',
     tour: "Don't Look Down Tour",
-    image: 'https://s1.ticketm.net/dam/a/f72/4c583e8a-6739-4fb2-9861-e73978841f72_RETINA_PORTRAIT_3_2.jpg',
+    image:
+      'https://s1.ticketm.net/dam/a/f72/4c583e8a-6739-4fb2-9861-e73978841f72_RETINA_PORTRAIT_3_2.jpg',
     alt: 'Rod Wave performing at Smoothie King Center',
     accentColor: '#F59E0B',
   },
@@ -40,7 +42,8 @@ const forYouEvents = [
     time: '7:00PM',
     venue: 'Miami, FL - Hard Rock Stadium',
     tour: 'The Romantic Tour',
-    image: 'https://s1.ticketm.net/dam/a/386/bdd143e5-4726-49af-9523-7927682c9386_RETINA_PORTRAIT_3_2.jpg',
+    image:
+      'https://s1.ticketm.net/dam/a/386/bdd143e5-4726-49af-9523-7927682c9386_RETINA_PORTRAIT_3_2.jpg',
     alt: 'Bruno Mars performing The Romantic Tour live',
     accentColor: '#A855F7',
   },
@@ -51,9 +54,10 @@ const trendingEvents = [
     id: 1,
     rank: '01',
     title: 'Bruno Mars',
-    tour: "The Romantic Tour",
+    tour: 'The Romantic Tour',
     genre: 'Pop/R&B',
-    image: 'https://s1.ticketm.net/dam/a/386/bdd143e5-4726-49af-9523-7927682c9386_RETINA_PORTRAIT_3_2.jpg',
+    image:
+      'https://s1.ticketm.net/dam/a/386/bdd143e5-4726-49af-9523-7927682c9386_RETINA_PORTRAIT_3_2.jpg',
     alt: 'Bruno Mars performing The Romantic Tour',
     genreIcon: 'mic',
   },
@@ -63,7 +67,8 @@ const trendingEvents = [
     title: 'Rod Wave',
     tour: "Don't Look Down Tour",
     genre: 'Hip-Hop/Rap',
-    image: 'https://s1.ticketm.net/dam/a/f72/4c583e8a-6739-4fb2-9861-e73978841f72_RETINA_PORTRAIT_3_2.jpg',
+    image:
+      'https://s1.ticketm.net/dam/a/f72/4c583e8a-6739-4fb2-9861-e73978841f72_RETINA_PORTRAIT_3_2.jpg',
     alt: "Rod Wave performing Don't Look Down Tour",
     genreIcon: 'mic',
   },
@@ -73,7 +78,8 @@ const trendingEvents = [
     title: 'Zach John King',
     tour: "Get To Drinkin' Tour",
     genre: 'Rock',
-    image: 'https://s1.ticketm.net/dam/a/551/e19efdce-e15d-436f-b66c-3aa8822a2551_RETINA_PORTRAIT_3_2.jpg',
+    image:
+      'https://s1.ticketm.net/dam/a/551/e19efdce-e15d-436f-b66c-3aa8822a2551_RETINA_PORTRAIT_3_2.jpg',
     alt: 'Zach John King performing live',
     genreIcon: 'mic',
   },
@@ -83,7 +89,8 @@ const trendingEvents = [
     title: 'Harry Styles',
     tour: 'Love On Tour',
     genre: 'Pop',
-    image: 'https://s1.ticketm.net/dam/a/2dd/442cd707-df65-4781-9aa8-eec39540d2dd_RETINA_PORTRAIT_3_2.jpg',
+    image:
+      'https://s1.ticketm.net/dam/a/2dd/442cd707-df65-4781-9aa8-eec39540d2dd_RETINA_PORTRAIT_3_2.jpg',
     alt: 'Harry Styles performing live on stage',
     genreIcon: 'mic',
   },
@@ -93,7 +100,8 @@ const trendingEvents = [
     title: 'Coldplay',
     tour: 'Music of the Spheres World Tour',
     genre: 'Rock/Pop',
-    image: 'https://s1.ticketm.net/dam/a/60b/945abba9-7ebf-4862-a8a5-a622c8b0560b_RETINA_PORTRAIT_3_2.jpg',
+    image:
+      'https://s1.ticketm.net/dam/a/60b/945abba9-7ebf-4862-a8a5-a622c8b0560b_RETINA_PORTRAIT_3_2.jpg',
     alt: 'Coldplay performing Music of the Spheres tour',
     genreIcon: 'mic',
   },
@@ -106,7 +114,8 @@ const recentlyBrowsed = [
     date: 'Sat Sep 19 - 7:00 PM',
     venue: 'Hard Rock Stadium, Miami',
     tour: 'The Romantic Tour',
-    image: 'https://s1.ticketm.net/dam/a/386/bdd143e5-4726-49af-9523-7927682c9386_RETINA_PORTRAIT_3_2.jpg',
+    image:
+      'https://s1.ticketm.net/dam/a/386/bdd143e5-4726-49af-9523-7927682c9386_RETINA_PORTRAIT_3_2.jpg',
     alt: 'Bruno Mars performing The Romantic Tour live',
   },
   {
@@ -115,7 +124,8 @@ const recentlyBrowsed = [
     date: 'Sat Sep 19 - 8:00 PM',
     venue: 'Smoothie King Center, New Orleans',
     tour: "Don't Look Down Tour",
-    image: 'https://s1.ticketm.net/dam/a/f72/4c583e8a-6739-4fb2-9861-e73978841f72_RETINA_PORTRAIT_3_2.jpg',
+    image:
+      'https://s1.ticketm.net/dam/a/f72/4c583e8a-6739-4fb2-9861-e73978841f72_RETINA_PORTRAIT_3_2.jpg',
     alt: "Rod Wave performing Don't Look Down Tour",
   },
 ];
@@ -183,12 +193,7 @@ export default function MobileHomePage() {
               <div className="rounded-xl overflow-hidden bg-black">
                 {/* Cover image — top portion */}
                 <div className="relative" style={{ height: '145px' }}>
-                  <AppImage
-                    src={event?.image}
-                    alt={event?.alt}
-                    fill
-                    className="object-cover"
-                  />
+                  <AppImage src={event?.image} alt={event?.alt} fill className="object-cover" />
                   {/* Bottom gradient for text readability */}
                   <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                   {/* Date pill — bottom-left of image */}
@@ -220,7 +225,11 @@ export default function MobileHomePage() {
                       </h3>
                       {/* Three-dot menu */}
                       <button className="flex-shrink-0 w-7 h-7 flex items-center justify-center">
-                        <svg className="w-4 h-4 text-white/50" fill="currentColor" viewBox="0 0 24 24">
+                        <svg
+                          className="w-4 h-4 text-white/50"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
                           <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
                         </svg>
                       </button>
@@ -267,12 +276,7 @@ export default function MobileHomePage() {
                   {item?.rank}
                 </span>
                 <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                  <AppImage
-                    src={item?.image}
-                    alt={item?.alt}
-                    fill
-                    className="object-cover"
-                  />
+                  <AppImage src={item?.image} alt={item?.alt} fill className="object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-white font-bold text-sm leading-tight">{item?.title}</p>
@@ -328,18 +332,11 @@ export default function MobileHomePage() {
             <Link key={event?.id} href={`/event-detail?id=${event?.id}`} className="block">
               <div className="flex items-center gap-3 bg-[#111] rounded-xl p-3">
                 <div className="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0">
-                  <AppImage
-                    src={event?.image}
-                    alt={event?.alt}
-                    fill
-                    className="object-cover"
-                  />
+                  <AppImage src={event?.image} alt={event?.alt} fill className="object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-white font-bold text-sm">{event?.title}</p>
-                  {event?.tour && (
-                    <p className="text-white/40 text-[10px] mt-0.5">{event?.tour}</p>
-                  )}
+                  {event?.tour && <p className="text-white/40 text-[10px] mt-0.5">{event?.tour}</p>}
                   <p className="text-white/50 text-xs mt-0.5">
                     {event?.date} · {event?.venue}
                   </p>
