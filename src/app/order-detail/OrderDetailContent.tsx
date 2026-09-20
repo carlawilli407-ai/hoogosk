@@ -29,26 +29,6 @@ interface EventData {
 }
 
 const EVENT_CATALOG: Record<string, EventData> = {
-  'bruno-sept20': {
-    id: 'bruno-sept20',
-    order_number: '51-992301/CA',
-    artist: 'BRUNO MARS',
-    tour: 'THE ROMANTIC TOUR',
-    date: 'SUN, SEP 20, 2026',
-    time: '7:00 PM',
-    venue: 'Hard Rock Stadium',
-    city: 'Miami, FL',
-    email: 'sandrawilli4042@gmail.com',
-    image: 'https://s1.ticketm.net/dam/a/386/bdd143e5-4726-49af-9523-7927682c9386_RETINA_PORTRAIT_3_2.jpg',
-    accentColor: '#A855F7',
-    ticket_count: 3,
-    total_amount: 630,
-    tickets: [
-      { id: '1', section: '102', row: 'G', seat: '12' },
-      { id: '2', section: '102', row: 'G', seat: '13' },
-      { id: '3', section: '102', row: 'G', seat: '14' },
-    ],
-  },
   'bruno-sept23': {
     id: 'bruno-sept23',
     order_number: '51-884210/CA',
@@ -64,10 +44,10 @@ const EVENT_CATALOG: Record<string, EventData> = {
     ticket_count: 4,
     total_amount: 840,
     tickets: [
-      { id: '1', section: '113', row: '26', seat: '16' },
-      { id: '2', section: '113', row: '26', seat: '17' },
-      { id: '3', section: '113', row: '26', seat: '18' },
-      { id: '4', section: '113', row: '26', seat: '19' },
+      { id: '1', section: '111', row: '22', seat: '7' },
+      { id: '2', section: '111', row: '22', seat: '8' },
+      { id: '3', section: '111', row: '22', seat: '9' },
+      { id: '4', section: '111', row: '22', seat: '10' },
     ],
   },
   'rod-sept26': {
@@ -82,32 +62,13 @@ const EVENT_CATALOG: Record<string, EventData> = {
     email: 'sandrawilli4042@gmail.com',
     image: 'https://s1.ticketm.net/dam/a/f72/4c583e8a-6739-4fb2-9861-e73978841f72_RETINA_PORTRAIT_3_2.jpg',
     accentColor: '#F59E0B',
-    ticket_count: 3,
-    total_amount: 480,
+    ticket_count: 4,
+    total_amount: 640,
     tickets: [
-      { id: '1', section: '119', row: '12', seat: '5' },
-      { id: '2', section: '119', row: '12', seat: '6' },
-      { id: '3', section: '119', row: '12', seat: '7' },
-    ],
-  },
-  'rod-oct31': {
-    id: 'rod-oct31',
-    order_number: '51-665109/CA',
-    artist: 'ROD WAVE',
-    tour: "DON'T LOOK DOWN TOUR",
-    date: 'THU, OCT 31, 2026',
-    time: '8:30 PM',
-    venue: 'United Center',
-    city: 'Chicago, IL',
-    email: 'sandrawilli4042@gmail.com',
-    image: 'https://s1.ticketm.net/dam/a/f72/4c583e8a-6739-4fb2-9861-e73978841f72_RETINA_PORTRAIT_3_2.jpg',
-    accentColor: '#F59E0B',
-    ticket_count: 3,
-    total_amount: 510,
-    tickets: [
-      { id: '1', section: '108', row: 'D', seat: '10' },
-      { id: '2', section: '108', row: 'D', seat: '11' },
-      { id: '3', section: '108', row: 'D', seat: '12' },
+      { id: '1', section: '106', row: 'U', seat: '11' },
+      { id: '2', section: '106', row: 'U', seat: '12' },
+      { id: '3', section: '106', row: 'U', seat: '13' },
+      { id: '4', section: '106', row: 'U', seat: '14' },
     ],
   },
 };
@@ -122,8 +83,8 @@ const TICKET_STUB_BADGE = (
 function TicketDetailView() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const eventKey = searchParams.get('event') || 'bruno-sept20';
-  const order = EVENT_CATALOG[eventKey] || EVENT_CATALOG['bruno-sept20'];
+  const eventKey = searchParams.get('event') || 'bruno-sept23';
+  const order = EVENT_CATALOG[eventKey] || EVENT_CATALOG['bruno-sept23'];
 
   const [activeTab, setActiveTab] = useState<'Tickets' | 'Extras'>('Tickets');
 

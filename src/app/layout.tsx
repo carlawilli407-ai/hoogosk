@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import '../styles/tailwind.css';
 import { AuthProvider } from '@/contexts/AuthContext';
+import { TM_BRAND } from './tm-brand';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -18,10 +19,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: 'Ticketmaster — Find Tickets to Live Events Near You',
-  description: 'Buy tickets to concerts, sports, arts, theater, family events and more.',
+  title: TM_BRAND.title,
+  description: TM_BRAND.description,
   icons: {
-    icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
+    icon: [{ url: TM_BRAND.icon, type: 'image/x-icon' }],
   },
 };
 

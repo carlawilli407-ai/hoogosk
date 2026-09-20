@@ -39,7 +39,7 @@ export default function CheckoutPage() {
           BTS World Tour &apos;ARIRANG&apos; · Sep 06, 2026
         </p>
         <button
-          onClick={() => router.push('/order-detail')}
+          onClick={() => router.push('/my-account')}
           className="bg-[#026CDF] text-white font-bold px-8 py-4 rounded-xl text-sm w-full"
         >
           View My Tickets

@@ -1,14 +1,10 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import AppImage from '@/components/ui/AppImage';
 
 type TransferStep =
-  | 'select-tickets'
-  | 'transfer-to'
-  | 'recipient-details'
-  | 'authenticate'
-  | 'success';
+  'select-tickets' | 'transfer-to' | 'recipient-details' | 'authenticate' | 'success';
 
 interface SeatInfo {
   id: string;
@@ -34,29 +30,22 @@ interface EventInfo {
 
 const TICKET_STUB_BADGE = (
   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2 12h18M4 12v-4a2 2 0 012-2h10a2 2 0 012 2v4M4 12v4a2 2 0 002 2h10a2 2 0 002-2v-4m0 0V7m0 5H6m10 0h2m-6 0h2m-4 0h2" />
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 8.5v7m0 0v7m0-7h16v7m0-3a2 2 0 01-2 2H6a2 2 0 01-2-2v-2" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M2 12h18M4 12v-4a2 2 0 012-2h10a2 2 0 012 2v4M4 12v4a2 2 0 002 2h10a2 2 0 002-2v-4m0 0V7m0 5H6m10 0h2m-6 0h2m-4 0h2"
+    />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M4 8.5v7m0 0v7m0-7h16v7m0-3a2 2 0 01-2 2H6a2 2 0 01-2-2v-2"
+    />
   </svg>
 );
 
 const EVENT_DATA: Record<string, EventInfo> = {
-  'bruno-sept20': {
-    id: 'bruno-sept20',
-    artist: 'BRUNO MARS',
-    tour: 'THE ROMANTIC TOUR',
-    title: 'BRUNO MARS — THE ROMANTIC TOUR',
-    date: 'SUN, SEP 20, 2026',
-    time: '7:00 PM',
-    venue: 'Hard Rock Stadium',
-    city: 'Miami, FL',
-    email: 'sandrawilli4042@gmail.com',
-    image: 'https://s1.ticketm.net/dam/a/386/bdd143e5-4726-49af-9523-7927682c9386_RETINA_PORTRAIT_3_2.jpg',
-    tickets: [
-      { id: '1', section: '102', row: 'G', seat: '12' },
-      { id: '2', section: '102', row: 'G', seat: '13' },
-      { id: '3', section: '102', row: 'G', seat: '14' },
-    ],
-  },
   'bruno-sept23': {
     id: 'bruno-sept23',
     artist: 'BRUNO MARS',
@@ -67,46 +56,32 @@ const EVENT_DATA: Record<string, EventInfo> = {
     venue: 'Alamodome',
     city: 'San Antonio, TX',
     email: 'sandrawilli4042@gmail.com',
-    image: 'https://s1.ticketm.net/dam/a/386/bdd143e5-4726-49af-9523-7927682c9386_RETINA_PORTRAIT_3_2.jpg',
+    image:
+      'https://s1.ticketm.net/dam/a/386/bdd143e5-4726-49af-9523-7927682c9386_RETINA_PORTRAIT_3_2.jpg',
     tickets: [
-      { id: '1', section: '113', row: '26', seat: '16' },
-      { id: '2', section: '113', row: '26', seat: '17' },
-      { id: '3', section: '113', row: '26', seat: '18' },
-      { id: '4', section: '113', row: '26', seat: '19' },
+      { id: '1', section: '111', row: '22', seat: '7' },
+      { id: '2', section: '111', row: '22', seat: '8' },
+      { id: '3', section: '111', row: '22', seat: '9' },
+      { id: '4', section: '111', row: '22', seat: '10' },
     ],
   },
   'rod-sept26': {
     id: 'rod-sept26',
     artist: 'ROD WAVE',
     tour: "DON'T LOOK DOWN TOUR",
-    title: 'ROD WAVE — DON\'T LOOK DOWN TOUR',
+    title: "ROD WAVE — DON'T LOOK DOWN TOUR",
     date: 'SAT, SEP 26, 2026',
     time: '8:00 PM',
     venue: 'American Airlines Center',
     city: 'Dallas, TX',
     email: 'sandrawilli4042@gmail.com',
-    image: 'https://s1.ticketm.net/dam/a/f72/4c583e8a-6739-4fb2-9861-e73978841f72_RETINA_PORTRAIT_3_2.jpg',
+    image:
+      'https://s1.ticketm.net/dam/a/f72/4c583e8a-6739-4fb2-9861-e73978841f72_RETINA_PORTRAIT_3_2.jpg',
     tickets: [
-      { id: '1', section: '119', row: '12', seat: '5' },
-      { id: '2', section: '119', row: '12', seat: '6' },
-      { id: '3', section: '119', row: '12', seat: '7' },
-    ],
-  },
-  'rod-oct31': {
-    id: 'rod-oct31',
-    artist: 'ROD WAVE',
-    tour: "DON'T LOOK DOWN TOUR",
-    title: 'ROD WAVE — DON\'T LOOK DOWN TOUR',
-    date: 'THU, OCT 31, 2026',
-    time: '8:30 PM',
-    venue: 'United Center',
-    city: 'Chicago, IL',
-    email: 'sandrawilli4042@gmail.com',
-    image: 'https://s1.ticketm.net/dam/a/f72/4c583e8a-6739-4fb2-9861-e73978841f72_RETINA_PORTRAIT_3_2.jpg',
-    tickets: [
-      { id: '1', section: '108', row: 'D', seat: '10' },
-      { id: '2', section: '108', row: 'D', seat: '11' },
-      { id: '3', section: '108', row: 'D', seat: '12' },
+      { id: '1', section: '106', row: 'U', seat: '11' },
+      { id: '2', section: '106', row: 'U', seat: '12' },
+      { id: '3', section: '106', row: 'U', seat: '13' },
+      { id: '4', section: '106', row: 'U', seat: '14' },
     ],
   },
 };
@@ -116,19 +91,21 @@ function TicketTransferContent() {
   const searchParams = useSearchParams();
   const [step, setStep] = useState<TransferStep>('select-tickets');
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
-  const [form, setForm] = useState({ firstName: '', lastName: '', email: 'sandrawilli4042@gmail.com', note: '' });
+  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', note: '' });
   const [useMobile, setUseMobile] = useState(false);
   const [mobileNumber, setMobileNumber] = useState('');
   const [otpCode, setOtpCode] = useState('');
   const [loading, setLoading] = useState(false);
+  const [authReady, setAuthReady] = useState(false);
 
   // Derive the active event directly from the URL so the very first render
   // (and therefore the background image + seat list) matches the requested
   // event instead of flashing a default.
   const initialEventKey = searchParams.get('event');
   const eventKey =
-    initialEventKey && EVENT_DATA[initialEventKey] ? initialEventKey : 'bruno-sept20';
-  const event = EVENT_DATA[eventKey] || EVENT_DATA['bruno-sept20'];
+    initialEventKey && EVENT_DATA[initialEventKey] ? initialEventKey : 'bruno-sept23';
+  const event = EVENT_DATA[eventKey] || EVENT_DATA['bruno-sept23'];
+  const accountEmail = event.email;
   const SEATS: SeatInfo[] = event.tickets.map((t, i) => ({
     id: `seat-${i}-${t.seat}`,
     label: `SEAT ${t.seat}`,
@@ -155,6 +132,17 @@ function TicketTransferContent() {
     setLoading(false);
     setStep('success');
   };
+
+  // When entering the authentication step, show a 5-second "authenticating"
+  // loader before revealing the one-time-code input.
+  useEffect(() => {
+    if (step === 'authenticate') {
+      setAuthReady(false);
+      const timer = setTimeout(() => setAuthReady(true), 5000);
+      return () => clearTimeout(timer);
+    }
+    return undefined;
+  }, [step]);
 
   // ── SUCCESS ──
   if (step === 'success') {
@@ -204,39 +192,56 @@ function TicketTransferContent() {
           <span className="text-white font-bold text-base">Authentication</span>
           <div className="w-14" />
         </div>
-        <div className="flex-1 px-5 pt-8 pb-6">
-          <h1 className="text-gray-900 font-extrabold text-2xl leading-tight mb-4">
-            Authenticate Your Account
-          </h1>
-          <p className="text-gray-600 text-sm leading-relaxed mb-8">
-            A one-time code has been sent to{' '}
-            <span className="font-bold text-gray-900">
-              {useMobile ? `*****${mobileNumber.slice(-4)}` : `*****${form.email.slice(-4)}`}
-            </span>
-            . Please enter your code below to continue.
-          </p>
-          <div className="mb-2">
-            <label className="block text-gray-500 text-sm mb-2">One-Time Code</label>
-            <input
-              type="text"
-              inputMode="numeric"
-              maxLength={6}
-              value={otpCode}
-              onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, ''))}
-              className="w-full border border-gray-300 rounded-lg px-4 py-3.5 text-gray-900 text-lg tracking-widest focus:outline-none focus:border-[#026CDF] focus:ring-1 focus:ring-[#026CDF]"
-            />
-          </div>
-          <p className="text-gray-400 text-xs mb-10">It may take a minute to receive your code.</p>
-          <button
-            onClick={handleConfirmCode}
-            disabled={loading || otpCode.length < 4}
-            className="w-full bg-[#026CDF] text-white font-bold py-4 rounded-xl text-base disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-          >
-            {loading && (
-              <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-            )}
-            Confirm Code
-          </button>
+        <div className="flex-1 px-5 pt-8 pb-6 flex flex-col items-center">
+          {!authReady ? (
+            <>
+              <h1 className="text-gray-900 font-extrabold text-2xl leading-tight mb-4">
+                Authenticating Your Account
+              </h1>
+              <p className="text-gray-600 text-sm leading-relaxed mb-8">
+                A one-time code has been sent to{' '}
+                <span className="font-bold text-gray-900">{`*****${accountEmail.split('@')[0].slice(-4)}`}</span>
+                .
+              </p>
+              <div className="w-10 h-10 border-3 border-[#026CDF] border-t-transparent rounded-full animate-spin" />
+              <p className="text-gray-400 text-xs mt-4">Please wait 5 seconds...</p>
+            </>
+          ) : (
+            <>
+              <h1 className="text-gray-900 font-extrabold text-2xl leading-tight mb-4">
+                Authenticate Your Account
+              </h1>
+              <p className="text-gray-600 text-sm leading-relaxed mb-8">
+                A one-time code has been sent to{' '}
+                <span className="font-bold text-gray-900">{`*****${accountEmail.split('@')[0].slice(-4)}`}</span>
+                . Please enter your code below to continue.
+              </p>
+              <div className="mb-2 w-full">
+                <label className="block text-gray-500 text-sm mb-2">One-Time Code</label>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={6}
+                  value={otpCode}
+                  onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, ''))}
+                  className="w-full border border-gray-300 rounded-lg px-4 py-3.5 text-gray-900 text-lg tracking-widest focus:outline-none focus:border-[#026CDF] focus:ring-1 focus:ring-[#026CDF]"
+                />
+              </div>
+              <p className="text-gray-400 text-xs mb-10">
+                It may take a minute to receive your code.
+              </p>
+              <button
+                onClick={handleConfirmCode}
+                disabled={loading || otpCode.length < 4}
+                className="w-full bg-[#026CDF] text-white font-bold py-4 rounded-xl text-base disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              >
+                {loading && (
+                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                )}
+                Confirm Code
+              </button>
+            </>
+          )}
         </div>
       </div>
     );
@@ -268,7 +273,9 @@ function TicketTransferContent() {
             <h1 className="text-white font-extrabold text-xl leading-tight uppercase">
               {event.artist} — {event.tour}
             </h1>
-            <p className="text-white/50 text-xs mt-0.5">{event.venue} — {event.city}</p>
+            <p className="text-white/50 text-xs mt-0.5">
+              {event.venue} — {event.city}
+            </p>
           </div>
         </div>
 
@@ -368,7 +375,7 @@ function TicketTransferContent() {
           </button>
           <button
             onClick={() => setStep('authenticate')}
-            disabled={!form.firstName || (!form.email && !mobileNumber)}
+            disabled={!form.firstName}
             className="bg-black text-white font-bold text-sm px-7 py-3.5 rounded-xl disabled:opacity-50"
           >
             Transfer {selectedSeats.length || 1} Ticket{selectedSeats.length !== 1 ? 's' : ''}
@@ -404,7 +411,7 @@ function TicketTransferContent() {
             </svg>
           </button>
           <div className="absolute inset-x-0 top-12 px-4 space-y-2 opacity-60">
-            {SEATS.slice(0, 2).map((s) => (
+            {SEATS.map((s) => (
               <div key={s.id} className="bg-gray-600/80 rounded-lg px-4 py-3">
                 <p className="text-gray-300 text-xs font-bold uppercase mb-1">GENERAL SALE</p>
                 <div className="grid grid-cols-3">
@@ -479,7 +486,9 @@ function TicketTransferContent() {
             </div>
           </div>
           <div className="flex-shrink-0 flex items-center justify-between px-5 py-4 border-t border-gray-100 bg-white">
-            <span className="text-gray-600 text-sm font-medium">{selectedSeats.length} Selected</span>
+            <span className="text-gray-600 text-sm font-medium">
+              {selectedSeats.length} Selected
+            </span>
             <button
               onClick={() => setStep('recipient-details')}
               disabled={selectedSeats.length === 0}
@@ -518,7 +527,7 @@ function TicketTransferContent() {
           </svg>
         </button>
         <div className="absolute inset-x-0 top-12 px-4 space-y-2 opacity-60">
-          {SEATS.slice(0, 2).map((s) => (
+          {SEATS.map((s) => (
             <div key={s.id} className="bg-gray-600/80 rounded-lg px-4 py-3">
               <p className="text-gray-300 text-xs font-bold uppercase mb-1">GENERAL SALE</p>
               <div className="grid grid-cols-3">
