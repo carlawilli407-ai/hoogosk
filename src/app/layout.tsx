@@ -15,14 +15,32 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  themeColor: '#026cdf',
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  applicationName: 'Ticketmaster',
   title: TM_BRAND.title,
   description: TM_BRAND.description,
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    title: 'Ticketmaster',
+    statusBarStyle: 'black-translucent',
+  },
   icons: {
     icon: [{ url: TM_BRAND.icon, type: 'image/x-icon' }],
+    apple: [
+      {
+        url: '/assets/icons/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
+  },
+  other: {
+    'apple-mobile-web-app-capable': 'yes',
   },
 };
 
