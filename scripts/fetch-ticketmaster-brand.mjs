@@ -14,12 +14,17 @@ const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ' +
   'Chrome/124.0.0.0 Safari/537.36';
 
-const html = await fetch(TARGET, { headers: { 'user-agent': UA }, redirect: 'follow' }).then(
-  (r) => {
-    if (!r.ok) throw new Error(`ticketmaster.com returned HTTP ${r.status}`);
-    return r.text();
-  }
-);
+let html;
+try {
+  const res = await fetch(TARGET, { headers: { 'user-agent': UA }, redirect: 'follow' });
+  if (!res.ok) throw new Error(`ticketmaster.com returned HTTP ${res.status}`);
+  html = await res.text();
+} catch (e) {
+  console.warn(
+    `fetch-ticketmaster-brand: live fetch failed (${e instanceof Error ? e.message : String(e)}); keeping committed src/app/tm-brand.ts`
+  );
+  process.exit(0);
+}
 
 const firstMatch = (re) => {
   const m = html.match(re);

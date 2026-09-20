@@ -102,10 +102,14 @@ export function createClient() {
           } else {
             cookiesToSet.forEach(({ name, value, options }) => {
               try {
-                value
-                  ? localStorage.setItem(`${PFX}${name}`, value)
-                  : localStorage.removeItem(`${PFX}${name}`);
-              } catch {}
+                if (value) {
+                  localStorage.setItem(`${PFX}${name}`, value);
+                } else {
+                  localStorage.removeItem(`${PFX}${name}`);
+                }
+              } catch {
+                // localStorage unavailable (SSR/quota); fall back to cookie below
+              }
               if (value) setCookie(name, value, options);
             });
           }

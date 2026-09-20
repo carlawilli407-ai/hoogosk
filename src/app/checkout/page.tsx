@@ -90,7 +90,7 @@ export default function CheckoutPage() {
 
       {/* Order summary */}
       <div className="mx-4 mt-4 p-4 bg-gray-50 rounded-xl border border-gray-200">
-        <p className="text-gray-900 font-bold text-sm">BTS World Tour 'ARIRANG'</p>
+        <p className="text-gray-900 font-bold text-sm">BTS World Tour &apos;ARIRANG&apos;</p>
         <p className="text-gray-500 text-xs mt-0.5">Sun, Sep 06, 2026 · SoFi Stadium</p>
         <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-200">
           <span className="text-gray-600 text-xs">3 × General Sale (Sec 119, Row 12)</span>
@@ -226,7 +226,7 @@ export default function CheckoutPage() {
                 <div className="flex justify-between">
                   <span className="text-gray-500">Event</span>
                   <span className="text-gray-900 font-medium text-right max-w-[180px]">
-                    BTS World Tour 'ARIRANG'
+                    BTS World Tour &apos;ARIRANG&apos;
                   </span>
                 </div>
                 <div className="flex justify-between">

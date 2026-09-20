@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function EventInfo() {
   return (
@@ -10,13 +11,13 @@ export default function EventInfo() {
           <div className="prose prose-sm max-w-none text-muted-foreground leading-relaxed">
             <p>
               Taylor Swift&apos;s record-breaking Eras Tour returns to Los Angeles for an
-              unforgettable night at SoFi Stadium. Journey through every era of Taylor's musical
-              career — from her country roots to her pop domination — in a spectacular 3+ hour show
-              packed with 44 songs, stunning visuals, and surprise guests.
+              unforgettable night at SoFi Stadium. Journey through every era of Taylor&apos;s
+              musical career — from her country roots to her pop domination — in a spectacular 3+
+              hour show packed with 44 songs, stunning visuals, and surprise guests.
             </p>
             <p className="mt-3">
               This tour has already broken multiple records including the highest-grossing concert
-              tour of all time. Don't miss your chance to be part of music history. Friendship
+              tour of all time. Don&apos;t miss your chance to be part of music history. Friendship
               bracelets encouraged!
             </p>
           </div>
@@ -65,9 +66,12 @@ export default function EventInfo() {
                 </div>
               </div>
             </div>
-            <a href="/" className="block mt-3 text-sm font-semibold text-primary hover:underline">
+            <Link
+              href="/"
+              className="block mt-3 text-sm font-semibold text-primary hover:underline"
+            >
               Get Directions →
-            </a>
+            </Link>
           </div>
         </div>
       </div>
