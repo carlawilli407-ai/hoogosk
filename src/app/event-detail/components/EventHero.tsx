@@ -10,16 +10,16 @@ export default function EventHero() {
         alt="Taylor Swift Eras Tour concert stage with colorful lights in dark atmospheric stadium"
         fill
         className="object-cover"
-        priority
-      />
+        priority />
+      
 
       <div
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(to top, rgba(10,14,26,0.95) 30%, rgba(10,14,26,0.4) 70%, transparent 100%)',
-        }}
-      />
+          'linear-gradient(to top, rgba(10,14,26,0.95) 30%, rgba(10,14,26,0.4) 70%, transparent 100%)'
+        }} />
+      
 
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -42,14 +42,14 @@ export default function EventHero() {
                   className="w-4 h-4 text-primary"
                   fill="none"
                   stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                  viewBox="0 0 24 24">
+                  
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  
                 </svg>
                 Sat, Mar 15, 2025 · 7:00 PM
               </span>
@@ -58,14 +58,14 @@ export default function EventHero() {
                   className="w-4 h-4 text-primary"
                   fill="none"
                   stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                  viewBox="0 0 24 24">
+                  
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                  />
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  
                 </svg>
                 SoFi Stadium · Los Angeles, CA
               </span>
@@ -73,8 +73,8 @@ export default function EventHero() {
           </div>
           <Link
             href="/ticket-selection"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-blue-700 transition-all hover:scale-105 text-base shrink-0"
-          >
+            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-blue-700 transition-all hover:scale-105 text-base shrink-0">
+            
             Find Tickets
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -82,6 +82,6 @@ export default function EventHero() {
           </Link>
         </div>
       </div>
-    </div>
-  );
+    </div>);
+
 }

@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { createClient } from '@/lib/supabase/client';
 import AppImage from '@/components/ui/AppImage';
 import Link from 'next/link';
 
@@ -33,7 +32,6 @@ interface Order {
 export default function AccountView() {
   const [activeTab, setActiveTab] = useState<Tab>('tickets');
   const { user, getUserProfile } = useAuth();
-  const supabase = createClient();
 
   const [orders, setOrders] = useState<Order[]>([]);
   const [loadingOrders, setLoadingOrders] = useState(true);
@@ -72,6 +70,8 @@ export default function AccountView() {
     if (!user) return;
     setLoadingOrders(true);
     try {
+      const { createClient } = await import('@/lib/supabase/client');
+      const supabase = createClient();
       const { data: ordersData } = await supabase
         .from('orders')
         .select('*')
@@ -168,8 +168,7 @@ export default function AccountView() {
             onClick={() => setActiveTab(tab.id)}
             className={`flex items-center gap-2 px-5 py-4 text-sm font-semibold whitespace-nowrap transition-all border-b-2 ${
               activeTab === tab.id
-                ? 'border-primary text-primary'
-                : 'border-transparent text-muted-foreground hover:text-foreground'
+                ? 'border-primary text-primary' :'border-transparent text-muted-foreground hover:text-foreground'
             }`}
           >
             <span>{tab.icon}</span>
@@ -336,9 +335,7 @@ export default function AccountView() {
                     </p>
                     <span
                       className={`inline-block mt-1 px-2 py-0.5 text-xs font-semibold rounded-full ${
-                        order.order_status === 'upcoming'
-                          ? 'bg-green-100 text-green-700'
-                          : 'bg-gray-100 text-gray-600'
+                        order.order_status === 'upcoming' ?'bg-green-100 text-green-700' :'bg-gray-100 text-gray-600'
                       }`}
                     >
                       {order.order_status === 'upcoming' ? 'Upcoming' : 'Completed'}

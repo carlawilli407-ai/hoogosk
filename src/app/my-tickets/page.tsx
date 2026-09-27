@@ -6,7 +6,7 @@ export default function MyTicketsPage() {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace('/my-account');
+    router?.replace('/my-account');
   }, [router]);
 
   return (

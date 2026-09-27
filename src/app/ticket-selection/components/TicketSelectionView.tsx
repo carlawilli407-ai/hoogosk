@@ -177,8 +177,7 @@ export default function TicketSelectionView() {
                       onClick={() => setQuantity(q)}
                       className={`w-9 h-9 rounded-lg text-sm font-bold border transition-all ${
                         quantity === q
-                          ? 'bg-primary text-white border-primary'
-                          : 'border-border text-foreground hover:border-primary/50'
+                          ? 'bg-primary text-white border-primary' :'border-border text-foreground hover:border-primary/50'
                       }`}
                     >
                       {q}
@@ -218,28 +217,19 @@ export default function TicketSelectionView() {
                       onClick={() => setActiveType(type)}
                       className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium border transition-all ${
                         activeType === type
-                          ? 'bg-primary/10 border-primary text-primary'
-                          : 'border-border text-foreground hover:bg-secondary'
+                          ? 'bg-primary/10 border-primary text-primary' :'border-border text-foreground hover:bg-secondary'
                       }`}
                     >
                       <span
                         className={`w-2 h-2 rounded-full ${
-                          type === 'standard'
-                            ? 'bg-primary'
-                            : type === 'resale'
-                              ? 'bg-pink-500'
-                              : type === 'vip'
-                                ? 'bg-amber-500'
-                                : 'bg-foreground/40'
+                          type === 'standard' ?'bg-primary'
+                            : type === 'resale' ?'bg-pink-500'
+                              : type === 'vip' ?'bg-amber-500' :'bg-foreground/40'
                         }`}
                       />
-                      {type === 'all'
-                        ? 'All Types'
-                        : type === 'resale'
-                          ? 'Verified Resale'
-                          : type === 'vip'
-                            ? 'VIP Packages'
-                            : 'Standard'}
+                      {type === 'all' ?'All Types'
+                        : type === 'resale' ?'Verified Resale'
+                          : type === 'vip' ?'VIP Packages' :'Standard'}
                     </button>
                   ))}
                 </div>
@@ -280,19 +270,15 @@ export default function TicketSelectionView() {
                   }
                   className={`w-full text-left p-4 rounded-xl border transition-all ${
                     selectedTicket?.id === ticket.id
-                      ? 'border-primary bg-blue-50'
-                      : 'border-border bg-card hover:border-primary/40 hover:bg-secondary'
+                      ? 'border-primary bg-blue-50' :'border-border bg-card hover:border-primary/40 hover:bg-secondary'
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div
                         className={`w-3 h-3 rounded-full shrink-0 ${
-                          ticket.type === 'resale'
-                            ? 'bg-pink-500'
-                            : ticket.type === 'vip'
-                              ? 'bg-amber-500'
-                              : 'bg-primary'
+                          ticket.type === 'resale' ?'bg-pink-500'
+                            : ticket.type === 'vip' ?'bg-amber-500' :'bg-primary'
                         }`}
                       />
                       <div>

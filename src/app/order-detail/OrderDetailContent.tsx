@@ -40,16 +40,16 @@ const EVENT_CATALOG: Record<string, EventData> = {
     city: 'San Antonio, TX',
     email: 'sandrawilli4042@gmail.com',
     image:
-      'https://s1.ticketm.net/dam/a/386/bdd143e5-4726-49af-9523-7927682c9386_RETINA_PORTRAIT_3_2.jpg',
+    "https://img.rocket.new/generatedImages/rocket_gen_img_1468fb126-1772811146796.png",
     accentColor: '#A855F7',
     ticket_count: 4,
     total_amount: 840,
     tickets: [
-      { id: '1', section: '111', row: '22', seat: '7' },
-      { id: '2', section: '111', row: '22', seat: '8' },
-      { id: '3', section: '111', row: '22', seat: '9' },
-      { id: '4', section: '111', row: '22', seat: '10' },
-    ],
+    { id: '1', section: '111', row: '22', seat: '7' },
+    { id: '2', section: '111', row: '22', seat: '8' },
+    { id: '3', section: '111', row: '22', seat: '9' },
+    { id: '4', section: '111', row: '22', seat: '10' }]
+
   },
   'rod-sept26': {
     id: 'rod-sept26',
@@ -62,35 +62,35 @@ const EVENT_CATALOG: Record<string, EventData> = {
     city: 'Dallas, TX',
     email: 'sandrawilli4042@gmail.com',
     image:
-      'https://s1.ticketm.net/dam/a/f72/4c583e8a-6739-4fb2-9861-e73978841f72_RETINA_PORTRAIT_3_2.jpg',
+    "https://img.rocket.new/generatedImages/rocket_gen_img_1468fb126-1772811146796.png",
     accentColor: '#F59E0B',
     ticket_count: 4,
     total_amount: 640,
     tickets: [
-      { id: '1', section: '106', row: 'U', seat: '11' },
-      { id: '2', section: '106', row: 'U', seat: '12' },
-      { id: '3', section: '106', row: 'U', seat: '13' },
-      { id: '4', section: '106', row: 'U', seat: '14' },
-    ],
-  },
+    { id: '1', section: '106', row: 'U', seat: '11' },
+    { id: '2', section: '106', row: 'U', seat: '12' },
+    { id: '3', section: '106', row: 'U', seat: '13' },
+    { id: '4', section: '106', row: 'U', seat: '14' }]
+
+  }
 };
 
-const TICKET_STUB_BADGE = (
-  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+const TICKET_STUB_BADGE =
+<svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={1.5}
-      d="M2 12h18M4 12v-4a2 2 0 012-2h10a2 2 0 012 2v4M4 12v4a2 2 0 002 2h10a2 2 0 002-2v-4m0 0V7m0 5H6m10 0h2m-6 0h2m-4 0h2"
-    />
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth={1.5}
+    d="M2 12h18M4 12v-4a2 2 0 012-2h10a2 2 0 012 2v4M4 12v4a2 2 0 002 2h10a2 2 0 002-2v-4m0 0V7m0 5H6m10 0h2m-6 0h2m-4 0h2" />
+  
     <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={1.5}
-      d="M4 8.5v7m0 0v7m0-7h16v7m0-3a2 2 0 01-2 2H6a2 2 0 01-2-2v-2"
-    />
-  </svg>
-);
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth={1.5}
+    d="M4 8.5v7m0 0v7m0-7h16v7m0-3a2 2 0 01-2 2H6a2 2 0 01-2-2v-2" />
+  
+  </svg>;
+
 
 function TicketDetailView() {
   const router = useRouter();
@@ -129,8 +129,8 @@ function TicketDetailView() {
           alt={`${order.artist} concert`}
           fill
           className="object-cover"
-          priority
-        />
+          priority />
+        
       </div>
 
       {/* Blue View Tickets bar */}
@@ -148,24 +148,24 @@ function TicketDetailView() {
         <button
           onClick={() => setActiveTab('Tickets')}
           className={`flex-1 py-3.5 text-sm font-semibold transition-colors ${
-            activeTab === 'Tickets' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400'
-          }`}
-        >
+          activeTab === 'Tickets' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400'}`
+          }>
+          
           Tickets
         </button>
         <button
           onClick={() => setActiveTab('Extras')}
           className={`flex-1 py-3.5 text-sm font-semibold transition-colors ${
-            activeTab === 'Extras' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400'
-          }`}
-        >
+          activeTab === 'Extras' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400'}`
+          }>
+          
           Extras
         </button>
       </div>
 
       {/* Tickets tab */}
-      {activeTab === 'Tickets' && (
-        <div className="px-4 pt-4">
+      {activeTab === 'Tickets' &&
+      <div className="px-4 pt-4">
           {/* Order summary */}
           <div className="flex items-center justify-between mb-4">
             <div>
@@ -181,8 +181,8 @@ function TicketDetailView() {
 
           {/* Ticket cards */}
           <div className="flex flex-col gap-3 mb-6">
-            {order.tickets.map((ticket) => (
-              <div key={ticket.id} className="rounded-xl border border-gray-200 overflow-hidden">
+            {order.tickets.map((ticket) =>
+          <div key={ticket.id} className="rounded-xl border border-gray-200 overflow-hidden">
                 {/* GENERAL SALE label bar */}
                 <div className="bg-gray-100 px-4 py-2.5">
                   <p className="text-gray-700 font-bold text-xs uppercase tracking-wide">
@@ -211,7 +211,7 @@ function TicketDetailView() {
                   </div>
                 </div>
               </div>
-            ))}
+          )}
           </div>
 
           {/* MORE OPTIONS with map */}
@@ -220,27 +220,27 @@ function TicketDetailView() {
               MORE OPTIONS
             </h3>
             <div
-              className="relative rounded-xl overflow-hidden border border-gray-200"
-              style={{ height: '180px' }}
-            >
+            className="relative rounded-xl overflow-hidden border border-gray-200"
+            style={{ height: '180px' }}>
+            
               {/* Map background */}
               <div className="absolute inset-0 bg-[#e8e0d8]">
                 {/* Grid lines */}
                 <div className="absolute inset-0 opacity-20">
-                  {[...Array(8)].map((_, i) => (
-                    <div
-                      key={`h-${i}`}
-                      className="absolute border-t border-gray-500"
-                      style={{ top: `${i * 12.5}%`, left: 0, right: 0 }}
-                    />
-                  ))}
-                  {[...Array(6)].map((_, i) => (
-                    <div
-                      key={`v-${i}`}
-                      className="absolute border-l border-gray-500"
-                      style={{ left: `${i * 20}%`, top: 0, bottom: 0 }}
-                    />
-                  ))}
+                  {[...Array(8)].map((_, i) =>
+                <div
+                  key={`h-${i}`}
+                  className="absolute border-t border-gray-500"
+                  style={{ top: `${i * 12.5}%`, left: 0, right: 0 }} />
+
+                )}
+                  {[...Array(6)].map((_, i) =>
+                <div
+                  key={`v-${i}`}
+                  className="absolute border-l border-gray-500"
+                  style={{ left: `${i * 20}%`, top: 0, bottom: 0 }} />
+
+                )}
                 </div>
                 {/* Venue label */}
                 <div className="absolute top-6 left-1/2 -translate-x-1/2">
@@ -281,51 +281,51 @@ function TicketDetailView() {
               <div className="absolute bottom-0 left-0 right-0 bg-white/90 px-4 py-2 flex items-center justify-around z-10">
                 <button className="flex flex-col items-center gap-0.5">
                   <svg
-                    className="w-4 h-4 text-gray-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  className="w-4 h-4 text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  
                     <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 10l7-7m0 0l7 7m-7-7v18"
-                    />
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  
                   </svg>
                   <span className="text-[9px] text-gray-500">Directions</span>
                 </button>
                 <div className="w-px h-6 bg-gray-300" />
                 <button className="flex flex-col items-center gap-0.5">
                   <svg
-                    className="w-4 h-4 text-gray-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  className="w-4 h-4 text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  
                     <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  
                   </svg>
                   <span className="text-[9px] text-gray-500">Open Maps</span>
                 </button>
                 <div className="w-px h-6 bg-gray-300" />
                 <button className="flex flex-col items-center gap-0.5">
                   <svg
-                    className="w-4 h-4 text-gray-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  className="w-4 h-4 text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  
                     <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                    />
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  
                   </svg>
                   <span className="text-[9px] text-gray-500">Refresh</span>
                 </button>
@@ -335,49 +335,49 @@ function TicketDetailView() {
 
           {/* Transfer button */}
           <button
-            onClick={() => router.push(`/ticket-transfer?event=${eventKey}`)}
-            className="block w-full text-center bg-black text-white font-bold py-4 rounded-xl text-sm mb-4 mt-2"
-          >
+          onClick={() => router.push(`/ticket-transfer?event=${eventKey}`)}
+          className="block w-full text-center bg-black text-white font-bold py-4 rounded-xl text-sm mb-4 mt-2">
+          
             Transfer Tickets
           </button>
         </div>
-      )}
+      }
 
       {/* Extras tab */}
-      {activeTab === 'Extras' && (
-        <div className="px-4 pt-8 flex flex-col items-center text-center">
+      {activeTab === 'Extras' &&
+      <div className="px-4 pt-8 flex flex-col items-center text-center">
           <svg
-            className="w-16 h-16 text-gray-200 mb-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+          className="w-16 h-16 text-gray-200 mb-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24">
+          
             <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-            />
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={1.5}
+            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+          
           </svg>
           <p className="text-gray-500 text-sm">No extras available for this order.</p>
         </div>
-      )}
+      }
 
       <MobileBottomNav />
-    </div>
-  );
+    </div>);
+
 }
 
 export default function OrderDetailPage() {
   return (
     <Suspense
       fallback={
-        <div className="bg-white min-h-screen flex items-center justify-center">
+      <div className="bg-white min-h-screen flex items-center justify-center">
           <div className="w-8 h-8 border-2 border-[#026CDF] border-t-transparent rounded-full animate-spin" />
         </div>
-      }
-    >
+      }>
+      
       <TicketDetailView />
-    </Suspense>
-  );
+    </Suspense>);
+
 }

@@ -122,8 +122,7 @@ export default function CheckoutView() {
                   i + 1 < step
                     ? 'bg-green-500 text-white'
                     : i + 1 === step
-                      ? 'bg-primary text-white'
-                      : 'bg-border text-muted-foreground'
+                      ? 'bg-primary text-white' :'bg-border text-muted-foreground'
                 }`}
               >
                 {i + 1 < step ? (
@@ -191,8 +190,7 @@ export default function CheckoutView() {
                       onClick={() => setDelivery(opt.id as typeof delivery)}
                       className={`w-full text-left p-4 rounded-xl border-2 transition-all flex items-start gap-4 ${
                         delivery === opt.id
-                          ? 'border-primary bg-blue-50'
-                          : 'border-border hover:border-primary/40'
+                          ? 'border-primary bg-blue-50' :'border-border hover:border-primary/40'
                       }`}
                     >
                       <span className="text-2xl">{opt.icon}</span>
@@ -268,8 +266,7 @@ export default function CheckoutView() {
                       key={method}
                       className={`px-4 py-2 rounded-full text-xs font-semibold border transition-all ${
                         i === 0
-                          ? 'bg-primary text-white border-primary'
-                          : 'border-border text-muted-foreground hover:border-primary/50'
+                          ? 'bg-primary text-white border-primary' :'border-border text-muted-foreground hover:border-primary/50'
                       }`}
                     >
                       {method}
@@ -397,11 +394,8 @@ export default function CheckoutView() {
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Delivery</span>
                     <span className="font-semibold text-foreground capitalize">
-                      {delivery === 'willcall'
-                        ? 'Will Call'
-                        : delivery === 'print'
-                          ? 'Print at Home'
-                          : 'Mobile Ticket'}
+                      {delivery === 'willcall' ?'Will Call'
+                        : delivery === 'print' ?'Print at Home' :'Mobile Ticket'}
                     </span>
                   </div>
                 </div>
@@ -453,8 +447,7 @@ export default function CheckoutView() {
                     disabled={!agreed}
                     className={`flex-1 py-3.5 font-bold rounded-full transition-all text-sm ${
                       agreed
-                        ? 'bg-primary text-white hover:bg-blue-700 hover:scale-105 active:scale-95'
-                        : 'bg-muted text-muted-foreground cursor-not-allowed'
+                        ? 'bg-primary text-white hover:bg-blue-700 hover:scale-105 active:scale-95' :'bg-muted text-muted-foreground cursor-not-allowed'
                     }`}
                   >
                     Place Order · ${total.toFixed(2)}
