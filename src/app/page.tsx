@@ -75,23 +75,23 @@ const trendingEvents = [
   {
     id: 3,
     rank: '03',
+    title: 'Harry Styles',
+    tour: 'Love On Tour',
+    genre: 'Pop',
+    image:
+      'https://img.rocket.new/generatedImages/rocket_gen_img_11b355208-1772435022154.png',
+    alt: 'Harry Styles performing live on stage with guitar',
+    genreIcon: 'mic',
+  },
+  {
+    id: 4,
+    rank: '04',
     title: 'Zach John King',
     tour: "Get To Drinkin' Tour",
     genre: 'Rock',
     image:
       'https://s1.ticketm.net/dam/a/551/e19efdce-e15d-436f-b66c-3aa8822a2551_RETINA_PORTRAIT_3_2.jpg',
     alt: 'Zach John King performing live',
-    genreIcon: 'mic',
-  },
-  {
-    id: 4,
-    rank: '04',
-    title: 'Harry Styles',
-    tour: 'Love On Tour',
-    genre: 'Pop',
-    image:
-      'https://s1.ticketm.net/dam/a/2dd/442cd707-df65-4781-9aa8-eec39540d2dd_RETINA_PORTRAIT_3_2.jpg',
-    alt: 'Harry Styles performing live on stage',
     genreIcon: 'mic',
   },
   {
