@@ -83,6 +83,116 @@ const EVENT_DATA: Record<string, EventInfo> = {
     { id: '3', section: '106', row: 'U', seat: '13' },
     { id: '4', section: '106', row: 'U', seat: '14' }]
 
+  },
+  'bruno-oct02': {
+    id: 'bruno-oct02',
+    artist: 'BRUNO MARS',
+    tour: 'THE ROMANTIC TOUR',
+    title: 'BRUNO MARS — THE ROMANTIC TOUR',
+    date: 'FRI, OCT 2, 2026',
+    time: '7:30 PM',
+    venue: 'Sofi Stadium',
+    city: 'Inglewood, LA',
+    email: 'sandrawilli4042@gmail.com',
+    image:
+    "https://img.rocket.new/generatedImages/rocket_gen_img_1468fb126-1772811146796.png",
+    tickets: [
+    { id: '1', section: '103', row: '20', seat: 'A' },
+    { id: '2', section: '103', row: '20', seat: 'B' },
+    { id: '3', section: '103', row: '20', seat: 'C' },
+    { id: '4', section: '103', row: '20', seat: 'D' }]
+
+  },
+  'bruno-oct2': {
+    id: 'bruno-oct2',
+    artist: 'BRUNO MARS',
+    tour: 'THE ROMANTIC TOUR',
+    title: 'BRUNO MARS — THE ROMANTIC TOUR',
+    date: 'FRI, OCT 2, 2026',
+    time: '7:30 PM',
+    venue: 'Sofi Stadium',
+    city: 'Inglewood, LA',
+    email: 'sandrawilli4042@gmail.com',
+    image:
+    "https://img.rocket.new/generatedImages/rocket_gen_img_1468fb126-1772811146796.png",
+    tickets: [
+    { id: '1', section: '103', row: '20', seat: 'A' },
+    { id: '2', section: '103', row: '20', seat: 'B' },
+    { id: '3', section: '103', row: '20', seat: 'C' },
+    { id: '4', section: '103', row: '20', seat: 'D' }]
+
+  },
+  'bruno-oct03': {
+    id: 'bruno-oct03',
+    artist: 'BRUNO MARS',
+    tour: 'THE ROMANTIC TOUR',
+    title: 'BRUNO MARS — THE ROMANTIC TOUR',
+    date: 'SAT, OCT 3, 2026',
+    time: '7:30 PM',
+    venue: 'Sofi Stadium',
+    city: 'Inglewood, LA',
+    email: 'sandrawilli4042@gmail.com',
+    image:
+    "https://img.rocket.new/generatedImages/rocket_gen_img_1468fb126-1772811146796.png",
+    tickets: [
+    { id: '5', section: '119', row: '15', seat: 'A' },
+    { id: '6', section: '119', row: '15', seat: 'B' },
+    { id: '7', section: '119', row: '15', seat: 'C' }]
+
+  },
+  'bruno-oct3': {
+    id: 'bruno-oct3',
+    artist: 'BRUNO MARS',
+    tour: 'THE ROMANTIC TOUR',
+    title: 'BRUNO MARS — THE ROMANTIC TOUR',
+    date: 'SAT, OCT 3, 2026',
+    time: '7:30 PM',
+    venue: 'Sofi Stadium',
+    city: 'Inglewood, LA',
+    email: 'sandrawilli4042@gmail.com',
+    image:
+    "https://img.rocket.new/generatedImages/rocket_gen_img_1468fb126-1772811146796.png",
+    tickets: [
+    { id: '5', section: '119', row: '15', seat: 'A' },
+    { id: '6', section: '119', row: '15', seat: 'B' },
+    { id: '7', section: '119', row: '15', seat: 'C' }]
+
+  },
+  'bruno-oct07': {
+    id: 'bruno-oct07',
+    artist: 'BRUNO MARS',
+    tour: 'THE ROMANTIC TOUR',
+    title: 'BRUNO MARS — THE ROMANTIC TOUR',
+    date: 'TUE, OCT 7, 2026',
+    time: '7:30 PM',
+    venue: 'Sofi Stadium',
+    city: 'Inglewood, LA',
+    email: 'sandrawilli4042@gmail.com',
+    image:
+    "https://img.rocket.new/generatedImages/rocket_gen_img_1468fb126-1772811146796.png",
+    tickets: [
+    { id: '8', section: 'A1', row: '10', seat: '4' },
+    { id: '9', section: 'A1', row: '10', seat: '5' },
+    { id: '10', section: 'A1', row: '10', seat: '6' }]
+
+  },
+  'bruno-oct7': {
+    id: 'bruno-oct7',
+    artist: 'BRUNO MARS',
+    tour: 'THE ROMANTIC TOUR',
+    title: 'BRUNO MARS — THE ROMANTIC TOUR',
+    date: 'TUE, OCT 7, 2026',
+    time: '7:30 PM',
+    venue: 'Sofi Stadium',
+    city: 'Inglewood, LA',
+    email: 'sandrawilli4042@gmail.com',
+    image:
+    "https://img.rocket.new/generatedImages/rocket_gen_img_1468fb126-1772811146796.png",
+    tickets: [
+    { id: '8', section: 'A1', row: '10', seat: '4' },
+    { id: '9', section: 'A1', row: '10', seat: '5' },
+    { id: '10', section: 'A1', row: '10', seat: '6' }]
+
   }
 };
 
@@ -98,9 +208,6 @@ function TicketTransferContent() {
   const [loading, setLoading] = useState(false);
   const [authReady, setAuthReady] = useState(false);
 
-  // Derive the active event directly from the URL so the very first render
-  // (and therefore the background image + seat list) matches the requested
-  // event instead of flashing a default.
   const initialEventKey = searchParams.get('event');
   const eventKey =
   initialEventKey && EVENT_DATA[initialEventKey] ? initialEventKey : 'bruno-sept23';
@@ -133,8 +240,6 @@ function TicketTransferContent() {
     setStep('success');
   };
 
-  // When entering the authentication step, show a 5-second "authenticating"
-  // loader before revealing the one-time-code input.
   useEffect(() => {
     if (step === 'authenticate') {
       setAuthReady(false);
@@ -251,7 +356,7 @@ function TicketTransferContent() {
   if (step === 'recipient-details') {
     return (
       <div className="bg-white min-h-screen flex flex-col">
-        <div className="relative flex-shrink-0" style={{ height: '220px' }}>
+        <div className="relative flex-shrink-0" style={{ height: 220 }}>
           <AppImage
             src={event.image}
             alt={`${event.title} concert`}
@@ -389,7 +494,7 @@ function TicketTransferContent() {
   if (step === 'transfer-to') {
     return (
       <div className="bg-white min-h-screen flex flex-col">
-        <div className="relative flex-shrink-0" style={{ height: '380px' }}>
+        <div className="relative flex-shrink-0" style={{ height: 280 }}>
           <AppImage
             src={event.image}
             alt={`${event.title} concert`}
@@ -451,7 +556,6 @@ function TicketTransferContent() {
               </div>
             </div>
 
-            {/* Seat buttons with radios directly beneath each */}
             <div className="flex gap-3">
               {SEATS.map((s) =>
               <div key={s.id} className="flex flex-col items-center gap-2">
@@ -505,7 +609,7 @@ function TicketTransferContent() {
   // ── SELECT TICKETS (initial) ──
   return (
     <div className="bg-white min-h-screen flex flex-col">
-      <div className="relative flex-shrink-0" style={{ height: '380px' }}>
+      <div className="relative flex-shrink-0" style={{ height: 280 }}>
         <AppImage
           src={event.image}
           alt={`${event.title} concert`}
@@ -567,7 +671,6 @@ function TicketTransferContent() {
             </div>
           </div>
 
-          {/* Seat buttons with radios directly beneath each */}
           <div className="flex gap-3">
             {SEATS.map((s) =>
             <div key={s.id} className="flex flex-col items-center gap-2">
