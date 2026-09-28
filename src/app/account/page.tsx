@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import MobileBottomNav from '@/components/MobileBottomNav';
 import { useAuth } from '@/contexts/AuthContext';
-import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 
 interface SettingItem {
@@ -22,7 +21,6 @@ interface SettingSection {
 export default function AccountPage() {
   const { user } = useAuth();
   const router = useRouter();
-  const supabase = createClient();
   const [locationContent, setLocationContent] = useState(false);
   const [notifications, setNotifications] = useState(true);
 
@@ -35,6 +33,8 @@ export default function AccountPage() {
     .slice(0, 2);
 
   const handleSignOut = async () => {
+    const { createClient } = await import('@/lib/supabase/client');
+    const supabase = createClient();
     await supabase.auth.signOut();
     router.push('/sign-up-login');
   };

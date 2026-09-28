@@ -1,7 +1,6 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
-import { createClient } from '@/lib/supabase/client';
 
 const AuthContext = createContext<any>({});
 
@@ -13,33 +12,53 @@ export const useAuth = () => {
   return context;
 };
 
+const hasSupabaseConfig = () =>
+  !!(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<any>(null);
   const [session, setSession] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const supabase = createClient();
 
   useEffect(() => {
-    // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    if (!hasSupabaseConfig()) {
+      setLoading(false);
+      return;
+    }
+
+    let subscription: any;
+
+    const init = async () => {
+      const { createClient } = await import('@/lib/supabase/client');
+      const supabase = createClient();
+
+      const { data: { session } } = await supabase.auth.getSession();
       setSession(session);
       setUser(session?.user ?? null);
       setLoading(false);
-    });
 
-    // Listen for auth changes
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      setLoading(false);
-    });
+      const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+        setSession(session);
+        setUser(session?.user ?? null);
+        setLoading(false);
+      });
+      subscription = data.subscription;
+    };
 
-    return () => subscription.unsubscribe();
+    init();
+
+    return () => {
+      subscription?.unsubscribe();
+    };
   }, []);
 
+  const getSupabase = async () => {
+    const { createClient } = await import('@/lib/supabase/client');
+    return createClient();
+  };
+
   const signUp = async (email: string, password: string, metadata: any = {}) => {
+    const supabase = await getSupabase();
     const siteUrl =
       process.env.NEXT_PUBLIC_SITE_URL ||
       (typeof window !== 'undefined' ? window.location.origin : '');
@@ -56,48 +75,39 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       },
     });
     if (error) throw error;
-    // If user already exists but is unconfirmed, Supabase returns a fake success
-    // Detect this by checking if identities array is empty
     if (data.user && data.user.identities && data.user.identities.length === 0) {
       throw new Error('An account with this email already exists. Please sign in instead.');
     }
     return data;
   };
 
-  // Email/Password Sign In
   const signIn = async (email: string, password: string) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    const supabase = await getSupabase();
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) throw error;
     return data;
   };
 
-  // Sign Out
   const signOut = async () => {
+    const supabase = await getSupabase();
     const { error } = await supabase.auth.signOut();
     if (error) throw error;
   };
 
-  // Get Current User
   const getCurrentUser = async () => {
-    const {
-      data: { user },
-      error,
-    } = await supabase.auth.getUser();
+    const supabase = await getSupabase();
+    const { data: { user }, error } = await supabase.auth.getUser();
     if (error) throw error;
     return user;
   };
 
-  // Check if Email is Verified
   const isEmailVerified = () => {
     return user?.email_confirmed_at !== null;
   };
 
-  // Get User Profile from Database
   const getUserProfile = async () => {
     if (!user) return null;
+    const supabase = await getSupabase();
     const { data, error } = await supabase
       .from('user_profiles')
       .select('*')

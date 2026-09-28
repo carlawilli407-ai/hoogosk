@@ -25,8 +25,7 @@ export default function CategoryTabs() {
               onClick={() => setActive(cat?.label)}
               className={`category-tab flex items-center gap-2 px-4 py-4 text-sm font-semibold border-b-2 transition-all ${
                 active === cat?.label
-                  ? 'border-primary text-primary'
-                  : 'border-transparent text-foreground/60 hover:text-foreground hover:border-border'
+                  ? 'border-primary text-primary' :'border-transparent text-foreground/60 hover:text-foreground hover:border-border'
               }`}
             >
               <span>{cat?.icon}</span>

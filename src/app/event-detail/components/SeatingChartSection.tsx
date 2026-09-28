@@ -349,8 +349,7 @@ export default function SeatingChartSection() {
                     onClick={() => setActiveTab(tab)}
                     className={`flex-1 py-2 text-xs font-semibold capitalize transition-colors ${
                       activeTab === tab
-                        ? 'text-primary border-b-2 border-primary'
-                        : 'text-muted-foreground hover:text-foreground'
+                        ? 'text-primary border-b-2 border-primary' :'text-muted-foreground hover:text-foreground'
                     }`}
                   >
                     {tab === 'resale' ? '🔄 Resale' : tab === 'vip' ? '⭐ VIP' : 'Standard'}
@@ -366,8 +365,7 @@ export default function SeatingChartSection() {
                     onClick={() => setSelected(ticket.id)}
                     className={`w-full text-left p-3 rounded-xl border transition-all ${
                       selected === ticket.id
-                        ? 'ticket-card-selected border-primary'
-                        : 'border-border hover:border-primary/40 hover:bg-secondary'
+                        ? 'ticket-card-selected border-primary' :'border-border hover:border-primary/40 hover:bg-secondary'
                     }`}
                   >
                     <div className="flex items-center justify-between">
